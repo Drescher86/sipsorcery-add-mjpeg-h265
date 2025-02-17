@@ -1744,7 +1744,9 @@ namespace SIPSorcery.Net
 
                 if (sctp == null || sctp.state != RTCSctpTransportState.Connected)
                 {
-                    throw new ApplicationException("No SCTP transport is available.");
+                    dataChannels.AddPendingChannel(channel);
+                    return channel;
+                    //throw new ApplicationException("No SCTP transport is available.");
                 }
                 else
                 {
